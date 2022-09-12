@@ -270,7 +270,7 @@ Core_Commands.fly = {
 		
 		local noclip_enabled
 		
-		if table.find(flags,"-n") then
+		if table.find(flags,"n") then
 			noclip_enabled = true
 		else
 			noclip_enabled = false
@@ -301,7 +301,7 @@ Core_Commands.ban = {
 
 		local days: number
 		
-		if table.find(flags,"-P") then
+		if table.find(flags,"P") then
 			days = 99e9 
 		else 
 			days = tonumber(args[2]) 

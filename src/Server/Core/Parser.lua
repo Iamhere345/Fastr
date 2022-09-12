@@ -116,8 +116,19 @@ local function GetFlags(args: {string})
 	for i, arg in args do
 		if string.sub(arg, 0, 1) == "-" then
 			print("match: "..arg)
-			table.insert(flags, arg)
-			table.remove(args, i)
+
+			arg = arg:sub(1, arg:len())
+
+			if arg:len() > 1 then
+				for x = 0, string.len(arg), 1 do
+					table.insert(flags, string.sub(arg, x, x))
+					table.remove(args, i)
+				end
+			else
+				table.insert(flags, arg)
+				table.remove(args, i)
+			end
+			
 		end
 	end
 
