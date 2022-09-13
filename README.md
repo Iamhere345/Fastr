@@ -39,6 +39,17 @@ download either of these models and add them to your roblox game. (note: the loa
 - [Loader version](https://www.roblox.com/library/7981503602/)
 
  
+## Branches
+ 
+### main
+all stable features should be pushed to this branch and it is reccomended you use this over the other branches
+ 
+### unstable
+the development version of Fastr that is actively worked on. Features may be untested
+
+### experimental
+where new features are evaluated. May also be untested
+
 ## Features
  
 ### WIP, view docs site for more info
