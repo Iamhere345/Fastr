@@ -57,7 +57,7 @@ Commands.kill = {
 	Run = function(player,target,args,flags)
 		
 		for _,target in ipairs(target) {
-			if args["-p"] then
+			if args["p"] then
 				target.CanRespawn = false
 			end
 
