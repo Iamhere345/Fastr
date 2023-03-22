@@ -1,0 +1,358 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Fastr Docs</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="Installation.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li class="chapter-item expanded "><a href="Usage.html"><strong aria-hidden="true">3.</strong> Usage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Config.html"><strong aria-hidden="true">3.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="using_commands.html"><strong aria-hidden="true">3.2.</strong> Using Commands</a></li><li class="chapter-item expanded "><a href="making_Commands.html"><strong aria-hidden="true">3.3.</strong> Making Commands</a></li><li class="chapter-item expanded "><a href="creating_menu_widgets.html"><strong aria-hidden="true">3.4.</strong> Menu Widgets</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Fastr Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Fastr is a lightweight administration system. It comes with most commands that you would need pre-installed (ban, fly, kick, etc.), but is meant to be extended by other people. Fastr does not come with any bloatware (such as &quot;fun&quot; commands that serve no purpose other than for users to mess around with). </p>
+<h1 id="license"><a class="header" href="#license">License</a></h1>
+<p>Fastr and all it's source code is licensed under the <a href="https://github.com/Iamhere345/Fastr/blob/main/LICENSE.md">MIT license</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<h2 id="download"><a class="header" href="#download">Download</a></h2>
+<p>Download Fastr using any of these links. I am currently working on a way to install Fastr using rojo</p>
+<h3 id="method-1-roblox-model"><a class="header" href="#method-1-roblox-model">Method 1: Roblox Model</a></h3>
+<p>download either of these models and add them to your roblox game. (note: the loader version does not include the source code of Fastr, instead it requires Fastr (it can be configured to require the stable, unstable and experimental versions of Fastr). The Source version comes with all of Fastr's source code, which means you can modify it to your liking, but it won't automatically update.)</p>
+<ul>
+<li><a href="https://www.roblox.com/library/7768369303/">Source version</a></li>
+<li><a href="https://www.roblox.com/library/7981503602/">Loader version</a></li>
+</ul>
+<h3 id="method-2-github-releases"><a class="header" href="#method-2-github-releases">Method 2: Github Releases:</a></h3>
+<p>click on <a href="https://github.com/Iamhere345/Fastr/releases">this link</a> to open the releases page of Fastr and download the version of Fastr you would like.</p>
+<h3 id="method-3-rojo"><a class="header" href="#method-3-rojo">Method 3: Rojo</a></h3>
+<ul>
+<li>download the github repository (for cli users <code>git clone https://github.com/Iamhere345/Fastr.git</code>)</li>
+<li>Open your roblox place</li>
+<li><code>rojo serve</code> the repo and use the rojo plugin to sync it into your roblox place.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usage"><a class="header" href="#usage">Usage</a></h1>
+<p>This section was written to teach you have to use Fastr.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
+<p>There are several setting you can change using Fastr's settings module.</p>
+<h3 id="with-the-loader-version"><a class="header" href="#with-the-loader-version">With the loader version:</a></h3>
+<p>Open the Fastr folder and you will see the settings module.</p>
+<h3 id="with-the-souce-version"><a class="header" href="#with-the-souce-version">With the souce version:</a></h3>
+<p>In the Fastr folder, navigate to: Fastr &gt; Fastr_Server and you will see the settings module.</p>
+<h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
+<h3 id="ranks"><a class="header" href="#ranks">Ranks</a></h3>
+<p>this is a table that fastr uses to check if a user has the permissions required to run a command. The format is <code>userid,rank</code> or <code>username,rank</code>. the rank can be any number but the default rank is 0 for all users and the highest rank used in the default commands is 2. You set the minimum rank required to use a command in your own commands.</p>
+<p>Example:</p>
+<pre><code class="language-lua">local Ranks = {
+    {156,2},
+    {&quot;Builderman&quot;,2}
+}
+</code></pre>
+<h3 id="group-ranks"><a class="header" href="#group-ranks">Group Ranks</a></h3>
+<p>This is simular to the ranks table; it controls who has permissions to run different commands, except this is for groups, not idividual people. The first value is the <code>groupid</code>, the second is the <code>rank</code> and the third is the <code>permissionLevel</code>.</p>
+<p>Example:</p>
+<pre><code class="language-lua">    local GroupRanks = {
+        {1337,250,1.5}
+    }
+</code></pre>
+<h3 id="key"><a class="header" href="#key">Key</a></h3>
+<p>This is just the key that fastr uses for datastores. You can change it to whatever you want but be warned; if you ever want to change the key all
+previous data (including moderation data, i.e bans) will be wiped.</p>
+<h3 id="waitfords"><a class="header" href="#waitfords">WaitForDS</a></h3>
+<p>If this is set to true, Fastr will wait for moderation data to load before the rest of the admin system loads. Having This set to false will incur faster load times.</p>
+<h2 id="control-characters"><a class="header" href="#control-characters">Control Characters</a></h2>
+<p>Controls characters are characters that have a special meaning in commands</p>
+<h3 id="prefix"><a class="header" href="#prefix">Prefix</a></h3>
+<p>This is what you type before your command to let fastr know that you are typing a command. If you type <code>bring all</code> fastr won't do anything, but if you type <code>&lt;prefix&gt;bring all</code> it will bring all players to you. The default prefix is &quot;:&quot;.</p>
+<p>Example: <code>:tp all me</code></p>
+<h3 id="and"><a class="header" href="#and">And</a></h3>
+<p>Used to chain multiple commands together. The default and char is '+'. </p>
+<p>Example: <code>:bring all + m hello</code></p>
+<h3 id="repeat"><a class="header" href="#repeat">Repeat</a></h3>
+<p>Used to repeat a given command a multiple times. The default repeat char is '*'.</p>
+<p>Example: <code>:bring randother * 5</code></p>
+<h3 id="pipe"><a class="header" href="#pipe">Pipe</a></h3>
+<p>Used to &quot;pipe&quot; the output of one command into the input of another. The default pipe char is '|'.</p>
+<p>Example: <code>:team others | createteam red</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-commands"><a class="header" href="#using-commands">Using Commands</a></h1>
+<h2 id="basic-usage"><a class="header" href="#basic-usage">Basic usage</a></h2>
+<p>To execute a command, type the prefix, then the command's name (<code>:cmds</code> brings up a menu of all the commands). By default, the prefix is &quot;:&quot;</p>
+<h3 id="arguments"><a class="header" href="#arguments">Arguments</a></h3>
+<p>Some commands require additional information to run. For instance, the <code>ban</code> command needs to know which player you want to ban and for how long. Arguments go in a specific order; the <code>ban</code> command must have the player passed first, then the time. Some commands are optional; in Fastr's list of commands, these are annotated like this: <code>[optional argument]</code>, and required arguments are annotated like this: <code>&lt;required argument&gt;</code>.</p>
+<p>Example: <code>Command &lt;arg1&gt; &lt;arg2&gt; [arg3]&gt;</code></p>
+<h3 id="modifiers"><a class="header" href="#modifiers">Modifiers</a></h3>
+<p>Some words can be used as arguments. These words are: <code>all me random others randother team</code>. </p>
+<ul>
+<li>all: this modifier represents every player on the server. Example: <code>:bring all</code></li>
+<li>me: this passes the player that called the command as an argument. Example: <code>:kill me</code></li>
+<li>random: this passes a random player to the command. Example: <code>:bring random</code></li>
+<li>others: this passes every player apart from the player calling the command. Example: <code>:kick others</code></li>
+<li>randother: this passes a random player that is not the player who called it. <code>:kick randother</code></li>
+<li>team: this command takes the argument placed after the <code>team</code> argument and sees if it's a valid team. If it is a valid team, Fastr will pass every player in that team. <code>:bring team red</code></li>
+<li>player: this modifier is very different to the other modifiers: this modifier will be avaliable if the command has any modifier. All this means is if you type in a player's username or display name or you type in some of a player's username or display name it will pass that player as an argument.</li>
+</ul>
+<h3 id="flags"><a class="header" href="#flags">Flags</a></h3>
+<p>Flags are similar to arguments; they can modify the behavior of the command and are specified by the user. Flags are do not hold any information (currently), the only information the carry is weather they exist. Flags must be written with a hyphen.</p>
+<p>Example: <code>:command -f</code> and <code>:fly -n</code></p>
+<h2 id="advanced-usage"><a class="header" href="#advanced-usage">Advanced Usage</a></h2>
+<h3 id="command-bar"><a class="header" href="#command-bar">Command Bar</a></h3>
+<p>If you press the backslash button on your keyboard ('\'), a command bar will appear on the bottom of your screen. You can type out commands from the command bar without using the prefix. Any commands you type here will also not be displayed in the chat. Anyone can access the command bar, but only people with the correct permissions can execute commands.</p>
+<h3 id="chaining-commands"><a class="header" href="#chaining-commands">Chaining Commands</a></h3>
+<p>You can chain multiple commands together using the Chain operator (by default &quot;+&quot;). All this does is executes multiple commands in one message. </p>
+<p>Example: <code>:m 5 splitting teams + splitteam team1 team2 team3</code></p>
+<h3 id="piping-commands"><a class="header" href="#piping-commands">Piping commands</a></h3>
+<p>Using the pipe operator (by default, it's &quot;|&quot;), you can use a command as an argument for a command. This only works if that command returns something. The format for piping a command is <code>Command1 | commandThatWillBePiped</code>. The first command will run after the piped command has run. Look up &quot;piping in Unix&quot; to learn more about piping commands.</p>
+<p>Example: <code>:team all | createteam reallyRed red_team</code></p>
+<h3 id="repeating-commands"><a class="header" href="#repeating-commands">Repeating Commands</a></h3>
+<p>Like the name suggests, you can repeat commands. This will repeat the given command a certain amount of times. The default repeat operator is &quot;*&quot;.</p>
+<p>Example: <code>:kill random * 55</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="making-commands"><a class="header" href="#making-commands">Making Commands</a></h1>
+<p><strong>This section assumes that you already have some knowledge of Luau</strong></p>
+<p>Where you write commands is different depending on what version of Fastr you are using.</p>
+<h3 id="loader-version"><a class="header" href="#loader-version">Loader version</a></h3>
+<ul>
+<li>navigate to the Fastr folder</li>
+<li>Find and open the <code>Commands</code> module</li>
+</ul>
+<h3 id="source-version"><a class="header" href="#source-version">Source version</a></h3>
+<ul>
+<li>navigate to Fastr &gt; Core &gt; Commands</li>
+<li>create a new module (name it whatever you want)</li>
+</ul>
+<h2 id="how-to-write-commands"><a class="header" href="#how-to-write-commands">How to write commands</a></h2>
+<p>to make a command, you must add a table to the commands module script. command template:</p>
+<pre><code class="language-lua">Commands.(command name goes here) = {
+	Name = &quot;&quot;,
+	Desc = &quot;&quot;,
+	Usage = &quot;&quot;,
+	PermissionLevel = 1,
+	Modifyers = {},
+	Aliases = {},
+	Run = function(player,target,args,flags)
+		
+	end
+}
+</code></pre>
+<ul>
+<li>
+<p>Name: This is the name of the command. Fastr's parser uses this.</p>
+</li>
+<li>
+<p>Desc: a description of the command. this is useful for readability and is used by the :cmds command.</p>
+</li>
+<li>
+<p>Usage: this is also good for readability and is also used in the :cmds command</p>
+</li>
+<li>
+<p>PermissionLevel: This is the minimum required rank to run the command.</p>
+</li>
+<li>
+<p>Modifyers: The modifyers that can be used on the command</p>
+</li>
+<li>
+<p>Aliases: these are not required, but they are (as the name suggests) aliases for your command. If you have a command called :kill and you have &quot;stopliving&quot; in the aliases table, entering :stopliving will be the same as entering :kill.</p>
+</li>
+<li>
+<p>Run: this is the actual function where you put your code. it has three arguments:</p>
+<ul>
+<li>player: the player that called the command. this is an instance, not a string</li>
+<li>target: the target player, which is nil if your command doesn't have a modifyer. this is an instance, not a string.</li>
+<li>args: these are all of the arguments for the command. if you used modifyers for your command, your first modifyer should be that modfyer. if the modifyer is team then the second modifyer will be the name of the team</li>
+<li>flags: a table of all flags that were given when the command was entered.</li>
+</ul>
+</li>
+</ul>
+<p>example command:</p>
+<pre><code class="language-lua">Commands.kill = {
+	Name = &quot;kill&quot;,
+	Desc = &quot;kills the target player&quot;,
+	Usage = &quot;:kill &lt;player&gt; [amount of times you want to kill them]&quot;,
+	PermissionLevel = 1.5,
+	Modifyers = {&quot;all&quot;,&quot;me&quot;,&quot;random&quot;,&quot;randother&quot;,&quot;others&quot;,&quot;team&quot;},
+	Aliases = {},
+	Run = function(player,target,args,flags)
+		
+		for _,target in ipairs(target) {
+			if args[&quot;p&quot;] then
+				target.CanRespawn = false
+			end
+
+			if target.Character then
+				target.Character:FindFirstChild(&quot;Humanoid&quot;):TakeDamage(t.Character.Humanoid.MaxHealth)
+			else
+				target.CharacterAdded:Wait():WaitForChild(&quot;Humanoid&quot;):TakeDamage(t.Character.Humanoid.MaxHealth)
+			end
+		}
+		
+	end
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="menu-widgets"><a class="header" href="#menu-widgets">Menu Widgets</a></h1>
+<p>Menu widgets are gui pages that you can add to Fastr and will be included in the menu. By default, Fastr comes with commands, changelog, donation and download widgets.</p>
+<h2 id="creating-menu-widgets"><a class="header" href="#creating-menu-widgets">Creating Menu Widgets</a></h2>
+<h3 id="loader"><a class="header" href="#loader">Loader</a></h3>
+<p>go to your installation and create a folder and name it the name you would like for your widget. inside this put the gui stuff you would like to have for your widget. please keep in mind that the space you have for you ui is {0.775,0},{1,0}. while building your ui, you may want to put it inside a frame of that size.</p>
+<h3 id="source"><a class="header" href="#source">Source</a></h3>
+<ul>
+<li>go to Fastr_Client &gt; Resources &gt; Menu &gt; Tabs, duplicate one of the text buttons and name it what you want your widget to be called and change the text property to che text to the name of your widget. </li>
+<li>go to Fastr_Client &gt; Resources &gt; MenuResources and create a folder that has the same name as the text button you just made (case sensitive). </li>
+<li>go to Fastr_Client &gt; Resources &gt; Menu &gt; MainMenu and build you ui there. when you are done drag the ui you made to the folder you made in step 2</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
