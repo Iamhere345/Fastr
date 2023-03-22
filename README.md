@@ -1,5 +1,9 @@
 # Fastr
 
+## Project Postmortem
+
+This project has been archived. It's codebase it hard to work with and has not been actively worked for 6 months. The most recent changes to Fastr are in the IMD repository, and a replacement for Fastr may come in the future. Fastr didn't really live up to it's goals – it certainly wasn't bloatware-free or lightweight, and it had horrible api for creating commands. Features like `*` and `+` were pretty broken and the whole architecture was flawed. It is not reccomended to use Fastr in new work.
+
 Fastr is a bloat ware free, lightweight, highly configurable roblox admin system designed to be easy to use.
 
 ## Links
